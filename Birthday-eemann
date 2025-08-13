@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Eeman 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<style>
+    body {
+        background: #fff8f0 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        font-family: 'Quicksand', sans-serif;
+        text-align: center;
+        padding: 20px;
+        color: #333;
+        overflow-x: hidden;
+    }
+    h1 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 3rem;
+        margin-top: 20px;
+        color: #e57373;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        margin: 15px 0;
+    }
+    .joke {
+        font-style: italic;
+        color: #666;
+    }
+    .balloons {
+        font-size: 2.5rem;
+        margin-top: 15px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    audio {
+        margin-top: 20px;
+    }
+    button {
+        background-color: #ffb6b9;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        font-family: 'Quicksand', sans-serif;
+    }
+    button:hover {
+        background-color: #ff9aa2;
+    }
+    #surprise {
+        display: none;
+        margin-top: 15px;
+        font-size: 1.4rem;
+        color: #d32f2f;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+    /* Floating cake animation */
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-150px); opacity: 0; }
+    }
+    .cake-emoji {
+        position: fixed;
+        font-size: 2rem;
+        animation: floatUp 4s linear forwards;
+        z-index: 9999;
+    }
+    /* Footer */
+    footer {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.1rem;
+        margin-top: 25px;
+        color: #888;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Happy Birthday, Eeman! 🎂</h1>
+    <div class="balloons">🎈🎈🎈</div>
+    <p>Wishing you the sweetest year ahead, full of laughter, cake, and all your favorite things.</p>
+    <p class="joke">Still remember when you said "Taha bhai" for the first time 👀👀</p>
+    <p>May this day be as special and fabulous as you are!</p>
+    
+    <button onclick="showSurprise()">🎂 Tap for Cake Surprise 🎂</button>
+    <p id="surprise">🎉 You deserve ALL the cake and happiness today! 🍰💖</p>
+
+    <audio controls autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <footer>Made with ❤️ by Taha 💌 🥲 (just my face here)</footer>
+</div>
+
+<script>
+function showSurprise() {
+    let surprise = document.getElementById('surprise');
+    surprise.style.display = 'block';
+    setTimeout(() => surprise.style.opacity = 1, 50);
+
+    // Confetti for 5 seconds
+    let duration = 5 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+        confetti({ particleCount: 8, angle: 60, spread: 55, origin: { x: 0 } });
+        confetti({ particleCount: 8, angle: 120, spread: 55, origin: { x: 1 } });
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+
+    // Floating cake emojis
+    for (let i = 0; i < 10; i++) {
+        let cake = document.createElement('div');
+        cake.className = 'cake-emoji';
+        cake.innerText = '🍰';
+        cake.style.left = Math.random() * 100 + 'vw';
+        cake.style.bottom = '0px';
+        document.body.appendChild(cake);
+        setTimeout(() => cake.remove(), 4000);
+    }
+}
+</script>
+</body>
+</html>
